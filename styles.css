@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+  --background: #0aabce;
+  --background-light: #16bbdd;
+  --background-dark: #0797b8;
+  --hour-ink: #f0f5ef;
+  --scale-ink: #95e9d8;
+  --inlay: #a4f1dd;
+  --inlay-light: #d0fff0;
+  --silver: #c5ccc9;
+  --silver-light: #f6f7ef;
+  --silver-dark: #879797;
+  --metal-edge: #5e797e;
+  --shadow: #075269;
+  --axle: #354b50;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; }
+body {
+  background: var(--background);
+  /* Broad, low-contrast illumination across the page, without a dial disc. */
+  background-image: linear-gradient(135deg,
+    color-mix(in srgb, var(--background-light) 24%, var(--background)) 0%,
+    var(--background) 53%,
+    color-mix(in srgb, var(--background-dark) 22%, var(--background)) 100%);
+  font-family: system-ui, sans-serif;
+}
+.clock-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+}
+.clock {
+  display: block;
+  width: 90vmin;
+  height: 90vmin;
+  width: min(90vw, 90svh);
+  height: min(90vw, 90svh);
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+.hour-number, .outer-number {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hour-number { stroke: var(--hour-ink); }
+.outer-number, .minor-tick { stroke: var(--scale-ink); }
+.minor-tick { stroke-linecap: round; }
+.metal-edge { stroke: var(--metal-edge); }
+.metal-highlight { stroke: var(--silver-light); }
+.silver-stop { stop-color: var(--silver); }
+.silver-light-stop { stop-color: var(--silver-light); }
+.silver-dark-stop { stop-color: var(--silver-dark); }
+.inlay-stop { stop-color: var(--inlay); }
+.inlay-light-stop { stop-color: var(--inlay-light); }
+.edge-stop { stop-color: var(--metal-edge); }
+.axle-stop { stop-color: var(--axle); }
+.shadow-color { flood-color: var(--shadow); }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.no-script {
+  position: absolute;
+  padding: 1rem;
+  color: var(--hour-ink);
+  text-align: center;
+}
